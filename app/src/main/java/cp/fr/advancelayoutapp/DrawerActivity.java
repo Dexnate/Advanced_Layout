@@ -82,7 +82,7 @@ public class DrawerActivity extends AppCompatActivity
             navigateToFragment(new Fragment_Inscription());
 
         } else if (id == R.id.nav_slideshow) {
-
+            navigateToFragment(new RandomUserFragment());
         } else if (id == R.id.nav_manage) {
 
         }
