@@ -107,4 +107,10 @@ public class DrawerActivity extends AppCompatActivity
     public User getUser(){
         return this.user;
     }
+
+    //Méthode pour naviguer vers le fragment B
+
+    public void goToFragmentB(){
+        navigateToFragment(new FragmentB());
+    }
 }

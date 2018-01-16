@@ -1,6 +1,7 @@
 package cp.fr.advancelayoutapp;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,6 +33,9 @@ public class Fragment_Inscription extends Fragment {
                 String username = userNameEditText.getText().toString();
                 //récuperation du champ formulaire
                 parentActivity.getUser().setUserName(username);
+
+                //Navigation vers le fragment B en passantpar l'activité
+                parentActivity.goToFragmentB();
             }
         });
 
