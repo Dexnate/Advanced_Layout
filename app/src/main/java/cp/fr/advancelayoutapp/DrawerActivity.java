@@ -2,9 +2,6 @@ package cp.fr.advancelayoutapp;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,8 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import cp.fr.advancelayoutapp.model.User;
+
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,9 @@ public class DrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Instanciation d'un utilisateur
+        this.user = new User();
     }
 
     @Override
@@ -75,7 +79,7 @@ public class DrawerActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
            navigateToFragment(new FragmentB());
         } else if (id == R.id.nav_gallery) {
-            navigateToFragment(new Fragment_InscriptionActivity());
+            navigateToFragment(new Fragment_Inscription());
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -96,5 +100,11 @@ public class DrawerActivity extends AppCompatActivity
                 .beginTransaction()
                 .replace(R.id.fragmentContainer,targetFragment)
                 .commit();
+    }
+
+
+    //méthode permettant d'acceder à l'utilisateur
+    public User getUser(){
+        return this.user;
     }
 }

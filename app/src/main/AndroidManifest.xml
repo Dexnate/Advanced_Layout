@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Fragment_InscriptionActivity"></activity>
+        <activity android:name=".Fragment_Inscription"></activity>
     </application>
 
 </manifest>
