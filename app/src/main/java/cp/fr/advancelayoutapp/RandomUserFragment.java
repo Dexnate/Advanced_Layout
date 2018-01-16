@@ -62,6 +62,7 @@ public class RandomUserFragment extends Fragment {
     private void getDataFromHttp(){
         String url = "https://jsonplaceholder.typicode.com/users";
 
+
         //Définition de la requête
         StringRequest request = new StringRequest(
                 //Methode de la requête http
