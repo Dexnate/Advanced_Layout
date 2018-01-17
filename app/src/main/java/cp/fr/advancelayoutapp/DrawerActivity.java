@@ -3,6 +3,7 @@ package cp.fr.advancelayoutapp;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -171,10 +174,40 @@ public class DrawerActivity extends AppCompatActivity
                 }
                 //Masquage du lien login
                 navigationView.getMenu().findItem(R.id.action_login).setVisible(false);
+                //Affichage du lien logout
+                navigationView.getMenu().findItem(R.id.action_logout).setVisible(true);
             }else{
-                Log.d("Main", " Erreur Fireauth code: " + response.getErrorCode());
+                if(response !=null){
+                    Log.d("Main", " Erreur Fireauth code: " + response.getErrorCode());
+                }
+
                 Toast.makeText(this, "Impossible de vous identifier", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
+
+    //deconnexion de l'utilisateur
+    public void onLogout(MenuItem item) {
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(
+                new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                //affichage du lien login
+                navigationView.getMenu().findItem(R.id.action_login).setVisible(true);
+                //masquage du lien logout
+                navigationView.getMenu().findItem(R.id.action_logout).setVisible(false);
+
+                //Suppression des infos utilisateurs dans l'en tête
+                userNameTextView.setText("");
+                userEmailTextView.setText("");
+
+                fbUser = null;
+
+                //fermeture du menu
+                drawer.closeDrawer((GravityCompat.START));
+            }
+        });
+    }
+
 }

@@ -11,6 +11,12 @@
             android:title="Login"
             android:onClick="onLogin"/>
         <item
+            android:id="@+id/action_logout"
+            android:icon="@drawable/ic_log_out"
+            android:title="Logout"
+            android:onClick="onLogout"
+            android:visible="false"/>
+        <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
             android:title="Page 1" />
