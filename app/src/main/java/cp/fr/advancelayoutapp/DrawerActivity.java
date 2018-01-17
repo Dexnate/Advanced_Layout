@@ -1,6 +1,7 @@
 package cp.fr.advancelayoutapp;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -84,7 +85,8 @@ public class DrawerActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
             navigateToFragment(new RandomUserFragment());
         } else if (id == R.id.nav_manage) {
-
+            Intent mapIntention = new Intent(this, Maps.class);
+            startActivity(mapIntention);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
