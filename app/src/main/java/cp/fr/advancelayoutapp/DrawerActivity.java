@@ -186,6 +186,7 @@ public class DrawerActivity extends AppCompatActivity
         }
     }
 
+
     //deconnexion de l'utilisateur
     public void onLogout(MenuItem item) {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(
